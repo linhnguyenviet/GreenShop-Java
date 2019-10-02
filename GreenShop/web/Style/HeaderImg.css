@@ -1,0 +1,119 @@
+.HeaderImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.HeaderImg-wrap {
+  width: 80%;
+  margin: auto;
+  height: 150px;
+  position: relative;
+}
+.HeaderImg-wrapInner {
+  display: inline-block;
+  position: absolute;
+  top: 25%;
+  right: 0%;
+}
+.HeaderImg-inner {
+  display: inline-block;
+  margin-top: 0px;
+}
+.HeaderImg-inner span {
+  font-size: 0.8em;
+  color: gray;
+}
+.HeaderImg-cart {
+  display: inline-block;
+  margin-top: 0px;
+  margin-left: 30px;
+  padding:10px;
+  border:1.2px solid rgb(122, 121, 121);
+  border-radius:2px;
+}
+.HeaderImg-cart i {
+  font-size: 1.2em;
+  color: rgb(41, 41, 41);
+}
+.HeaderImg-cart .number {
+  border:1px solid #3FB871;
+  border-radius:2px;
+  padding: 2px 6px;
+  color:black;
+  font-weight: bold;
+  font-size:1em;
+  background: rgb(101, 204, 144);
+  margin-left:3px;
+}
+.HeaderImg-cart p {
+  font-size: 0.8em;
+  color: rgb(29, 29, 29);
+  font-weight: 500;
+  display:inline-block;
+}
+.HeaderImg-cart span {
+  font-size: 1.3em;
+  font-weight: bold;
+  color:#3FB871;
+}
+.HeaderImg img:first-child {
+  width: 300px;
+  padding-bottom: 30px;
+}
+.HeaderImg img:nth-child(2) {
+  width: 140px;
+  padding-top: 10px;
+}
+input:focus{
+  outline: none;
+}
+.HeaderImg form {
+  border-radius: 25px;
+  border: 1px solid #eeeeee;
+  padding: 10px;
+  margin-top:16px;
+}
+.HeaderImg form input {
+  border: none;
+  width: 350px;
+}
+.HeaderImg form button {
+  border: none;
+  background: white;
+  cursor: pointer;
+}
+.HeaderImg .fa-search {
+  color:black;
+}
+@media only screen and (max-width: 1260px)  {
+  .HeaderImg-wrapInner {
+    display: none;
+  }
+  .HeaderImg-wrap img:last-of-type {
+    display:none;
+  }
+  .HeaderImg-wrap  {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .HeaderImg img:first-child {
+    width:225px;
+    padding-bottom: 0;
+  }
+
+}
+
+@media only screen  and (max-width: 1260px)  {
+ 
+}
+@media only screen and (max-width: 768px)  {
+ .HeaderImg {
+  background: white;
+  position: fixed;
+  z-index: 3;
+  width: 100%;
+  top: -19px;
+  margin-bottom: 50px;
+ }
+}

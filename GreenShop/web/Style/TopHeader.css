@@ -1,0 +1,45 @@
+.TopHeader {
+    margin-bottom: 5px;
+    color: gray;
+    background-color: #202020;
+    font-size:0.85em;
+}
+.TopHeader-inner {
+    width:80%;
+    margin:auto;
+    position: relative;
+    padding: 10px 0px;
+}
+.TopHeader div div {
+    display:inline-block;
+}
+
+.TopHeader-inner a {
+    border-right:  1px solid gray;
+    padding: 0px 6px;
+    text-decoration: none;
+    color: gray;
+}
+.TopHeader-inner > a:first-of-type {
+    border-left:  1px solid gray;
+    margin-left: 25px;
+}
+.TopHeader-login {
+    position: absolute;
+    right:0%;
+}
+.TopHeader-login a {
+    padding: 0px 6px;
+    text-decoration: none;
+    color: gray;
+    border:none;
+    
+}
+.TopHeader i  {
+    font-size:0.8em;
+}
+@media only screen  and (max-width: 1260px)  {
+   .TopHeader {
+       display:none;
+   }
+}
