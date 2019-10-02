@@ -1,0 +1,54 @@
+.productDetail  {
+    display:grid;
+    grid-template-columns: repeat(2,40%);
+    grid-gap: 30px;
+    width:80%;
+    margin: 0 auto; 
+} 
+.productDetail img {
+    width:100%;
+}
+.productDetail .detailImg {
+    width:90%;
+
+}
+.productDetail .name p {
+    font-size:2em;
+    font-weight:bold;
+}
+.productDetail .price p {
+    font-size:1.3em;
+    color:red;
+    font-weight:bold;
+}
+.productDetail .category p {
+    font-size:1.2em;
+    font-weight:bold;
+    color:rgb(29, 78, 168);
+}
+.productDetail .btngroup1 input {
+    padding:7px 5px 2px 5px;
+    margin-bottom:5px;
+    margin-right:7px;
+    width:50px;
+}
+.productDetail .btngroup1 button {
+    background:rgb(230, 230, 230);
+    color:black;
+    border:1px solid rgb(192, 192, 192);
+    border-radius: 1px;
+    font-size:1.2em;
+    padding:2px 9px;
+    margin: 0 10px 20px 0;
+    cursor:pointer;
+}
+.productDetail .btngroup2 button {
+    background:rgb(57, 158, 116);
+    color:white;
+    border:1px solid rgb(57, 158, 116);
+    border-radius: 1px;
+    padding:12px;
+    margin-right:10px;
+    cursor:pointer;
+}
+

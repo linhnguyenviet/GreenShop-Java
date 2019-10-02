@@ -1,0 +1,75 @@
+.TopFooter {
+    margin: 0 auto;
+    width:80%;
+    display:flex;
+    flex-wrap: wrap;
+    background:#313131;
+    color:gray;
+    padding:  30px 0px 20px 0px ;
+}
+.TopFooter div {
+    flex: 1 0 14%;
+}
+.TopFooter div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 1.3em;
+    text-align: left;
+}
+
+.TopFooter div:nth-child(3) {
+    width:100%;
+    flex-grow: 3;
+    text-align: right;
+}
+.TopFooter input {
+    border: 1px solid gray;
+    width:82%;
+    padding:12px;
+}
+.TopFooter button {
+    background:#3FB871;
+    padding:13px;
+    border:none;
+    cursor: pointer;
+}
+.TopFooter i {
+    color:gray;
+}
+.TopFooter button i:last-child {
+    color:white;
+}
+.TopFooter h6 a {
+    margin:5px 5px;
+}
+.TopFooter h6 {
+    font-size:14px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.TopFooter div:nth-child(2) h6 {
+    margin-left:55px;
+    padding-bottom: 15px;
+}
+@media only screen and (max-width:900px) {
+    .TopFooter input {
+        width:200px;
+    }
+    .TopFooter div:nth-child(2) h6 {
+        padding-bottom: 0;
+    }
+    .TopFooter {
+        display:block;
+    }
+    .TopFooter div:nth-child(1) h6 {
+        text-align: center;
+    }
+    .TopFooter div:nth-child(2) h6 {
+        margin:20px 0;
+        text-align: center;
+    }
+    .TopFooter div:nth-child(3) {
+        text-align: center;
+    }
+}

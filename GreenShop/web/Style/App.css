@@ -1,0 +1,21 @@
+/* @import-normalize; */
+
+
+.toTop_btn{
+    position: fixed;
+    right: 2.5vw;
+    bottom: 10vh;
+    padding: 1.5vw 1.5vw;
+    background-color: #59b586;
+    color: #fff;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 768px)  {
+  .main{
+      margin-top: 155px;
+  }
+}
