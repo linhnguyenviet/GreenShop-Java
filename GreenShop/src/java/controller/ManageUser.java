@@ -78,7 +78,7 @@ public class ManageUser extends HttpServlet {
             c.unBlock(password, email);
         }
         else {
-            Customer cus = new Customer(c.sizeOfCustomer()+1,name,email,password,contact,address);
+            Customer cus = new Customer(name,email,password,contact,address,4);
             c.insertUser(cus);
         }
 

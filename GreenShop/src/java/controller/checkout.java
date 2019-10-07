@@ -99,7 +99,7 @@ public class checkout extends HttpServlet {
         
         for (HashMap.Entry<Integer, Item> list : cart.getCartItems().entrySet()) {
             try {
-                bd.insertBillDetail(new Bill_Detail(bd.sizeOfBill_Detail()+1, Bill_ID,
+                bd.insertBillDetail(new Bill_Detail(Bill_ID,
                         list.getValue().getFlower().getfID(),
                         list.getValue().getFlower().getPrice(),
                         list.getValue().getQuantity(),status));

@@ -72,7 +72,12 @@ public class Bill_Detail {
         this.status = status;
     }
 
-    
-    
+    public Bill_Detail(int billID, int fID, float price, int quantity, String status) {
+        this.billID = billID;
+        this.fID = fID;
+        this.price = price;
+        this.quantity = quantity;
+        this.status = status;
+    }
     
 }

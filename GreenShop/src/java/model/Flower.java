@@ -12,14 +12,19 @@ public class Flower {
     private int cateID;
     private String img ;
     private String quantity;
+    private int sale;
+    private float vote;
+   
 
-    public Flower(int fID, String fName, float price, int cateID, String img, String quantity) {
+    public Flower(int fID, String fName, float price, int cateID, String img, String quantity, int sale, float vote) {
         this.fID = fID;
         this.fName = fName;
         this.price = price;
         this.cateID = cateID;
         this.img = img;
         this.quantity = quantity;
+        this.sale = sale;
+        this.vote = vote;
     }
   
 
@@ -72,4 +77,15 @@ public class Flower {
     public void setCateID(int cateID) {
         this.cateID = cateID;
     }
+
+    public Flower(String fName, float price, int cateID, String quantity, int sale, float vote) {
+        this.fName = fName;
+        this.price = price;
+        this.cateID = cateID;
+        this.quantity = quantity;
+        this.sale = sale;
+        this.vote = vote;
+    }
+    
+    
 }
