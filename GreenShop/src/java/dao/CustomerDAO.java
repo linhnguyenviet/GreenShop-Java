@@ -140,7 +140,7 @@ public class CustomerDAO {
             ArrayList<Customer> cList = new ArrayList<Customer>();
 
             while (rs.next()) {
-                cList.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                cList.add(new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));
             }
 
             stmt.close();
@@ -162,7 +162,7 @@ public class CustomerDAO {
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Customer> cList = new ArrayList<Customer>();
             while (rs.next()) {
-                cList.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                cList.add(new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));
             }
 
             stmt.close();
@@ -335,7 +335,7 @@ public class CustomerDAO {
             ResultSet rs = stmt.executeQuery(sql);
             ArrayList<Customer> cList = new ArrayList<Customer>();
             while (rs.next()) {
-                cList.add(new Customer(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6)));
+                cList.add(new Customer(rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getString(6), rs.getInt(7)));
             }
 
             stmt.close();

@@ -119,7 +119,7 @@ public class register extends HttpServlet {
         else {
             request.setAttribute("prePage", request.getParameter("prePage"));
             request.getRequestDispatcher("login.jsp").forward(request, response);
-            Customer cus = new Customer(c.sizeOfCustomer()+1,name,email,password,contact,address);
+            Customer cus = new Customer(name,email,password,contact,address,4);
             c.insertUser(cus);
         }
     }

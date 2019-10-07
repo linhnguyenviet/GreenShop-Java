@@ -19,10 +19,9 @@ public class Bill_DetailDAO {
 
     public boolean insertBillDetail(Bill_Detail bd) throws SQLException {
         Connection connection = DBConnect.getConnection();
-        String sql = "INSERT INTO BillDetail VALUES(?,?,?,?,?,?)";
+        String sql = "INSERT INTO BillDetail VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setInt(1, bd.getBillDetailID());
             ps.setInt(2, bd.getBillID());
             ps.setInt(3, bd.getfID());
             ps.setFloat(4, bd.getPrice());
@@ -37,25 +36,25 @@ public class Bill_DetailDAO {
         return false;
     }
 
-public int sizeOfBill_Detail() {
-        Connection connection = DBConnect.getConnection();
-        String sql = "SELECT MAX(bDetailID) FROM BillDetail";
-        int max = 0;
-        try {
-            Statement s = connection.createStatement();
-            ResultSet rs = s.executeQuery(sql);
-
-            while (rs.next()) {
-                max = rs.getInt(1);
-            }
-            rs.close();
-            s.close();
-            return max;
-        } catch (SQLException e) {
-            Logger.getLogger(Bill_DetailDAO.class.getName()).log(Level.SEVERE, null, e);
-        }
-        return max;
-    }
+//public int sizeOfBill_Detail() {
+//        Connection connection = DBConnect.getConnection();
+//        String sql = "SELECT MAX(bDetailID) FROM BillDetail";
+//        int max = 0;
+//        try {
+//            Statement s = connection.createStatement();
+//            ResultSet rs = s.executeQuery(sql);
+//
+//            while (rs.next()) {
+//                max = rs.getInt(1);
+//            }
+//            rs.close();
+//            s.close();
+//            return max;
+//        } catch (SQLException e) {
+//            Logger.getLogger(Bill_DetailDAO.class.getName()).log(Level.SEVERE, null, e);
+//        }
+//        return max;
+//    }
 
     public ArrayList<Value> getAllBillDetail() {
         FlowerDAO f = new FlowerDAO();

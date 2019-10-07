@@ -34,7 +34,7 @@ public ArrayList<Flower> getListCategory() throws ClassNotFoundException, SQLExc
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
                 list.add(flower);
             }
             con.close();
@@ -58,7 +58,7 @@ public ArrayList<Flower> getListFlowerByPages (int firstResult, int maxResult) t
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -102,7 +102,7 @@ public Flower getFlowerDetail(String id) throws ClassNotFoundException, SQLExcep
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
                 return flower;
             }
             con.close();
@@ -125,7 +125,7 @@ public Flower getFlowerDetail(String id) throws ClassNotFoundException, SQLExcep
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -147,7 +147,7 @@ public Flower getFlowerDetail(String id) throws ClassNotFoundException, SQLExcep
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -169,7 +169,7 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -192,7 +192,7 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
                             count++;
 
                 Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
                  if(count>= firstResult && count <= maxResult)
                 list.add(flower);
             }
@@ -287,7 +287,7 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -309,7 +309,7 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3));
+            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }

@@ -84,6 +84,13 @@ public class Bill {
         this.date = date;
     }
 
-    
+    public Bill(int userID, float total, String payment, String address, String date, String bank) {
+        this.userID = userID;
+        this.total = total;
+        this.payment = payment;
+        this.address = address;
+        this.date = date;
+        this.bank = bank;
+    }
 
 }
