@@ -549,4 +549,23 @@ public class CustomerDAO {
         }
         return null;
     }
+    
+    public int getRoleLogin(String email) {
+        Connection con = DBConnect.getConnection();
+        String sql = "select Role from Customer where email = '" + email + "'";
+        PreparedStatement ps;
+        int role = 0;
+        try {
+            ps = (PreparedStatement) con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                role = rs.getInt("Role");
+                con.close();
+                return role;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
 }
