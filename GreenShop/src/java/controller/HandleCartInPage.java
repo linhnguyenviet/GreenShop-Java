@@ -242,7 +242,7 @@ public class HandleCartInPage extends HttpServlet {
             int idFlower = flower.getfID();
 
             try {
-                databaseQuant = Integer.parseInt(flower.getQuantity());
+                databaseQuant = flower.getQuantity();
                 if (cart != null) {
                     sessionQuant = cart.getCartItems().get(idFlower).getQuantity();
                 }

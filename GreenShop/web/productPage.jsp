@@ -226,7 +226,7 @@
                     <div class="product__price">
                         <p>  <%=Float.toString(b.getPrice())%> </p>
                     </div>
-                    <% if (Integer.parseInt(b.getQuantity()) <= 0) {
+                    <% if (b.getQuantity() <= 0) {
                     %>
                     <div >
                         <p style="color:gray;">  Sold Out </p>

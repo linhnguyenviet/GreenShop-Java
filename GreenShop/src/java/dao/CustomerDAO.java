@@ -74,7 +74,7 @@ public class CustomerDAO {
     // phương thức thêm tài khoản
     public boolean insertUser(Customer u) {
         Connection connection = DBConnect.getConnection();
-        String sql = "INSERT INTO Customer (cID, cName, Email, Password, Phone, Address) VALUES('" + u.getcID() + "',N'" + u.getcName() + "','" + u.getEmail() + "',N'" + u.getPassword() + "','" + u.getPhone() + "',N'" + u.getAddress() + "')";
+        String sql = "INSERT INTO Customer (cName, Email, Password, Phone, Address, Role) VALUES(N'" + u.getcName() + "','" + u.getEmail() + "',N'" + u.getPassword() + "','" + u.getPhone() + "',N'" + u.getAddress() + "','" + u.getRole()+ "')";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
             ps.executeUpdate();

@@ -54,6 +54,7 @@ public class ManageFlower extends HttpServlet {
         String price = request.getParameter("price");
         String category = request.getParameter("category");
         String quantity = request.getParameter("quantity");
+        String sale = request.getParameter("sale");
         String action = "Be careful";
         int categoryID = 1;
         FlowerDAO f = new FlowerDAO();
@@ -66,7 +67,7 @@ public class ManageFlower extends HttpServlet {
             Logger.getLogger(ManageFlower.class.getName()).log(Level.SEVERE, null, ex);
         }
         if (update != null) {
-            f.updateFlower(Integer.parseInt(fId), name, img, categoryID, price, quantity);
+            f.updateFlower(Integer.parseInt(fId),name, img, categoryID, price, quantity, sale);
             action = "Update Successed";
         } else if (delete != null) {
             f.deleteFlower(Integer.parseInt(fId));

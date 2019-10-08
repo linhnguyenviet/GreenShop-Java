@@ -34,7 +34,7 @@ public ArrayList<Flower> getListCategory() throws ClassNotFoundException, SQLExc
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
                 list.add(flower);
             }
             con.close();
@@ -58,7 +58,7 @@ public ArrayList<Flower> getListFlowerByPages (int firstResult, int maxResult) t
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -102,7 +102,7 @@ public Flower getFlowerDetail(String id) throws ClassNotFoundException, SQLExcep
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
                 return flower;
             }
             con.close();
@@ -125,7 +125,7 @@ public Flower getFlowerDetail(String id) throws ClassNotFoundException, SQLExcep
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -147,7 +147,7 @@ public Flower getFlowerDetail(String id) throws ClassNotFoundException, SQLExcep
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -169,7 +169,7 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -192,7 +192,7 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
                             count++;
 
                 Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
                  if(count>= firstResult && count <= maxResult)
                 list.add(flower);
             }
@@ -205,20 +205,19 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
        
     }
 
-    public void updateFlower(int fId,String name, String img, int category, String price,String quantity){
+    public void updateFlower(int fId,String name, String img, int category, String price,String quantity, String sale){
         Connection connection = DBConnect.getConnection();
         String sql = 
-        "Update Flower set fID = ? , fName = ? , Quantity = ?, Price = ?, cateID =?, Img=?  WHERE fID=?";
+        "Update Flower set fName = ?, Quantity = ?, Price = ?, cateID =?, Img = ?, Sale = ?  WHERE fID=?";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setInt(1, fId);
-            ps.setString(2, name); 
-            ps.setString(3,quantity);
-            ps.setFloat(4, Float.parseFloat(price));
-            ps.setInt(5, category);
-            ps.setString(6, img);
+            ps.setString(1, name); 
+            ps.setInt(2,Integer.parseInt(quantity));
+            ps.setFloat(3, Float.parseFloat(price));
+            ps.setInt(4, category);
+            ps.setString(5, img);
+            ps.setInt(6, Integer.parseInt(sale));
             ps.setInt(7, fId);
-
             ps.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(BillDAO.class.getName()).log(Level.SEVERE, null, e);
@@ -287,7 +286,7 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
@@ -309,7 +308,7 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
             count++;
             if(count>= firstResult && count <= maxResult) {
             Flower flower = new Flower(rs.getInt(1),rs.getString(2),rs.getFloat(4),rs.getInt(5),
-            rs.getString(6),rs.getString(3),rs.getInt(7),rs.getFloat(8));
+            rs.getString(6),rs.getInt(3),rs.getInt(7),rs.getFloat(8));
             list.add(flower);
             } 
         }
