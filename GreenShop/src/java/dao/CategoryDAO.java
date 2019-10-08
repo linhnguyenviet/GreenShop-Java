@@ -11,10 +11,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Category;
 import model.Flower;
+import model.Value;
 
 /**
  *
@@ -74,12 +77,11 @@ public class CategoryDAO {
     static public void updateCategory(int cateID,String name){
         Connection connection = DBConnect.getConnection();
         String sql = 
-        "Update Category set cateID = ? , Name = ? WHERE cateID=?";
+        "Update Category set Name = ? WHERE cateID=?";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setInt(1, cateID);
-            ps.setString(2, name); 
-            ps.setInt(3, cateID);
+            ps.setString(1, name); 
+            ps.setInt(2, cateID);
 
             ps.executeUpdate();
         } catch (SQLException e) {
@@ -87,18 +89,73 @@ public class CategoryDAO {
         }
     }
 
-     public void insertCategory(int cateID,String name){
+     public void insertCategory(String name){
         Connection connection = DBConnect.getConnection();
         String sql = 
-        "INSERT INTO Category VALUES(?,?);";
+        "INSERT INTO Category VALUES(?);";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setInt(1, cateID);
-            ps.setString(2, name);           
+            ps.setString(1, name);           
             ps.executeUpdate();
         } catch (SQLException e) {
             Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, e);
         }
+    }
+     
+     public void deleteCategory(int cateID){
+        Connection connection = DBConnect.getConnection();
+        String sql = 
+        "DELETE FROM Category  WHERE cateID=?";
+        try {
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setInt(1, cateID);
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(BillDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+     
+     public ArrayList<Value> getValueCategory() throws ClassNotFoundException, SQLException {
+       
+        ArrayList<Value> list = new ArrayList<Value>();
+        Set<String> set = new HashSet<String>();
+        CategoryDAO f = new CategoryDAO();
+        set = f.getAllCategory();
+        for (String category : set)
+        try {
+            int count = 0;
+            Connection con = new DBConnect().getConnection();
+            String sql = "SELECT * FROM Category Where Name LIKE N'%"+category+"%'"; ;
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+               count++;
+            }
+            list.add(new Value(category,count));
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+     
+     public Set<String> getAllCategory() throws ClassNotFoundException, SQLException {
+       
+        Set<String> set = new HashSet<String>();
+
+        try {
+            Connection con = new DBConnect().getConnection();
+            String sql = "SELECT * FROM Category";
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+               set.add(rs.getString(2));
+            }
+            con.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return set;
     }
      
     public static void main(String[] args) throws ClassNotFoundException, SQLException {

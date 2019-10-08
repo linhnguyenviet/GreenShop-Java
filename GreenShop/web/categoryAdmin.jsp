@@ -67,7 +67,7 @@ The above copyright notice and this permission notice shall be included in all c
                 border-color: #d43f3a;
             }
             .btn--big {
-                width:118px;
+                width:130px;
                 padding:12px;
             }
             #addRow {
@@ -136,10 +136,16 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p>User Profile</p>
                             </a>
                         </li>
-                        <li class="active ">
+                        <li>
                             <a href="flowerAdmin">
                                 <i class="nc-icon nc-tile-56"></i>
                                 <p>Flower Management</p>
+                            </a>
+                        </li>
+                          <li  class="active" >
+                            <a href="categoryAdmin">
+                                <i class="nc-icon nc-tile-56"></i>
+                                <p>Category Management</p>
                             </a>
                         </li>
                     </ul>
@@ -211,10 +217,10 @@ The above copyright notice and this permission notice shall be included in all c
                                         <table class="table">
                                             <thead class=" text-primary">
                                             <th>
-                                                Name
+                                                ID
                                             </th>
                                             <th>
-                                                ID
+                                                Name
                                             </th>                                      
                                             <th >
                                                 Manage
@@ -224,11 +230,11 @@ The above copyright notice and this permission notice shall be included in all c
                                                 <tr><button onclick = "toggleAdd()" class="btn btn--blue btn--big">Add Category</button></tr>
                                             <tr id ="addRow" class="hide" >
                                             <form action="ManageCategory" method="get">
+                                                <td >
+                                                    <input type="text" name="cateID" style="border:none;text-indent:35px;" value="" readonly>
+                                                </td>
                                                 <td>
                                                     <input type="text" name="name" style="border:none;" value="">     
-                                                </td>
-                                                <td >
-                                                    <input type="text" name="cateID" style="border:none;text-indent:35px;" value="">
                                                 </td>
                                                 <td>
                                                     <input class="btn btn--blue" type="submit" value="SUBMIT" name="Submit" onclick="function add() {
@@ -244,11 +250,11 @@ The above copyright notice and this permission notice shall be included in all c
                                             %>
                                             <form action="ManageCategory" method="get">
                                                 <tr>
+                                                    <td >
+                                                        <input type="text" name="cateId" style="border:none;text-indent:35px;" value="<%=b.getCateId()%>" readonly>
+                                                    </td>
                                                     <td>
                                                         <input type="text" name="name" style="border:none; width:150px;" value="<%=b.getName()%>">     
-                                                    </td>
-                                                    <td >
-                                                        <input type="text" name="cateId" style="border:none;text-indent:35px;" value="<%=b.getCateId()%>">
                                                     </td>
                                                     <td>
                                                         <input class="btn btn--blue" type="submit" value="Update" name="Update"  onclick="function update() {

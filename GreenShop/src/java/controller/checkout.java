@@ -88,7 +88,7 @@ public class checkout extends HttpServlet {
         CustomerDAO c = new CustomerDAO();
         BillDAO billDAO = new BillDAO();
         int Bill_ID = billDAO.sizeOfBill()+1;
-        Bill bill = new Bill(Bill_ID, uid, total, pttt, addr, dtf.format(localDate), bank);
+        Bill bill = new Bill(uid, total, pttt, addr, dtf.format(localDate), bank);
         
         billDAO.insertBill(bill);
         
@@ -104,7 +104,7 @@ public class checkout extends HttpServlet {
                         list.getValue().getFlower().getPrice(),
                         list.getValue().getQuantity(),status));
                 Flower f = fd.getFlowerDetail(Integer.toString(list.getValue().getFlower().getfID()));
-                int newQuant = Integer.parseInt(f.getQuantity()) - list.getValue().getQuantity();
+                int newQuant = f.getQuantity() - list.getValue().getQuantity();
                 fd.updateFlowerQuantity(newQuant, list.getValue().getFlower().getfID());
                 
             } catch (SQLException | ClassNotFoundException | NumberFormatException ex) {

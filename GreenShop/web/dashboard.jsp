@@ -4,6 +4,7 @@
     Author     : hp
 --%>
 
+<%@page import="dao.CategoryDAO"%>
 <%@page import="dao.CustomerDAO"%>
 <%@page import="dao.BillDAO"%>
 <%@page import="dao.Bill_DetailDAO"%>
@@ -55,7 +56,7 @@ The above copyright notice and this permission notice shall be included in all c
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="./paper-dashboard-master/assets/demo/demo.css" rel="stylesheet" />
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-        <% FlowerDAO cat = new FlowerDAO();
+        <% CategoryDAO cat = new CategoryDAO();
             ArrayList<Value> list = new ArrayList<Value>();
             list = cat.getValueCategory();
             request.setAttribute("list", list);
@@ -63,16 +64,16 @@ The above copyright notice and this permission notice shall be included in all c
         <script type="text/javascript">
             google.load('visualization', '1', {'packages': ['columnchart']});
             google.setOnLoadCallback(drawChart);
-
+            console.log("tets???")
             function drawChart() {
-                console.log('${linh.get("Sinh nhật")}')
                 var array = [['Category', 'Number of Flower']]
                 array.push(['Sinh nhật', 20]);
                 array.push(['Struts', 35]);
                 array.push(['tiệc cưới', 21]);
-
+                console.log(${list} )
                 var data1 = google.visualization.arrayToDataTable([
                     ['Category', 'Number of Flower']
+                    
             <c:forEach items="${list}" var="item">
                     , ['${item.name}',${item.num}]
             </c:forEach>
@@ -362,21 +363,7 @@ The above copyright notice and this permission notice shall be included in all c
                             </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-md-7" style="margin:auto;">
-                            <div class="card ">
-                                <div class="card-header ">
-                                    <h5 class="card-title">Category</h5>
-                                    <p class="card-category">Percents of all Categories</p>
-                                </div>
-                                <div class="card-body ">
-                                    <div id="Chart2"></div>
-                                </div>
-
-                            </div>
-                        </div>
-
-                    </div>
+                    
                 </div>
                 <footer class="footer footer-black  footer-white ">
                     <div class="container-fluid">

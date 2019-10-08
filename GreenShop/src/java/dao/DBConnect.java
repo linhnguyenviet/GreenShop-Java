@@ -17,10 +17,10 @@ public class DBConnect {
 //Linh leader
            // con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-0DAEBRL\\SQLEXPRESS:64344;databaseName=GreenShop;","sa","123456");
 //Tri loz
-//          con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-VPF0AQ3\\SQLEXPRESS:60383;databaseName=GreenShop;","sa","123456");
+          con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-VPF0AQ3\\SQLEXPRESS:60383;databaseName=GreenShop;","sa","123456");
 //Thuan
  //        con = DriverManager.getConnection("jdbc:sqlserver://JAKESNGUYEN\\SQLEXPRESS:58871;databaseName=GreenShop;", "vietthuan","thuan1998");
-con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-F1TH0P9\\MSSQLSERVER:1433;databaseName=GreenShop;","sa","123456");
+//con = DriverManager.getConnection("jdbc:sqlserver://DESKTOP-F1TH0P9\\MSSQLSERVER:1433;databaseName=GreenShop;","sa","123456");
         } catch (Exception e) {
             e.printStackTrace();
             System.out.println("Fail");

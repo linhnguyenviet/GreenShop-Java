@@ -57,7 +57,7 @@ public class HandleCart extends HttpServlet {
             int idFlower = Integer.parseInt(fId);
             Flower flower = f.getFlowerDetail(fId);
             try {
-                databaseQuant = Integer.parseInt(flower.getQuantity());
+                databaseQuant = flower.getQuantity();
                 if (cart != null) {
                     sessionQuant = cart.getCartItems().get(idFlower).getQuantity();
                 }

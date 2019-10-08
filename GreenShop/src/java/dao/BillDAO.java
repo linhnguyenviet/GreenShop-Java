@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import model.Bill;
-import model.Value;
 
 /**
  *
@@ -19,16 +18,15 @@ public class BillDAO {
 
     public boolean insertBill(Bill bill) {
         Connection connection = DBConnect.getConnection();
-        String sql = "INSERT INTO Bill VALUES(?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO Bill VALUES(?,?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setInt(1, bill.getBillID());
-            ps.setInt(2, bill.getUserID());
-            ps.setFloat(3, bill.getTotal());
-            ps.setString(4, bill.getPayment());
-            ps.setString(5, bill.getBank());
-            ps.setString(6, bill.getAddress());
-            ps.setString(7, bill.getDate());
+            ps.setInt(1, bill.getUserID());
+            ps.setFloat(2, bill.getTotal());
+            ps.setString(3, bill.getPayment());
+            ps.setString(4, bill.getBank());
+            ps.setString(5, bill.getAddress());
+            ps.setString(6, bill.getDate());
             ps.executeUpdate();
             return true;
         } catch (SQLException e) {

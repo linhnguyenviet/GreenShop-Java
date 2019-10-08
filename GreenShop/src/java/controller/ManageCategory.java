@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
 
 import dao.CategoryDAO;
-import dao.FlowerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -23,15 +17,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class ManageCategory extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -49,15 +34,6 @@ public class ManageCategory extends HttpServlet {
         }
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -82,12 +58,13 @@ public class ManageCategory extends HttpServlet {
         if (update != null) {
             f.updateCategory(Integer.parseInt(cateId), name);
             action = "Update Successed"; 
+        
+        } else if (delete != null) {
+            f.deleteCategory(Integer.parseInt(cateId));
+            action = "Delete Successed";
         }
-//        } else if (delete != null) {
-//            f.deleteFlower(Integer.parseInt(fId));
-//            action = "Delete Successed";
          else if (submit != null) {
-            f.insertCategory( length + 1, name);
+            f.insertCategory(name);
             action = "Add Successed";
         }
 
@@ -95,25 +72,12 @@ public class ManageCategory extends HttpServlet {
         request.getRequestDispatcher("categoryAdmin").forward(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";

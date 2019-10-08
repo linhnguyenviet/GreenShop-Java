@@ -142,7 +142,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p>Flower Management</p>
                             </a>
                         </li>
-                         <li>
+                        <li>
                             <a href="categoryAdmin">
                                 <i class="nc-icon nc-tile-56"></i>
                                 <p>Category Management</p>
@@ -227,9 +227,15 @@ The above copyright notice and this permission notice shall be included in all c
                                             </th>
                                             <th>
                                                 Price
-                                            </th>
+                                            </th>                           
                                             <th >
                                                 Quantity
+                                            </th>
+                                            <th>
+                                                Promotion
+                                            </th>
+                                            <th>
+                                                Total
                                             </th>
                                             <th >
                                                 Manage
@@ -263,8 +269,8 @@ The above copyright notice and this permission notice shall be included in all c
                                                 </td>
                                                 <td>
                                                     <% ArrayList<Category> cat = new ArrayList<Category>();
-                                                       CategoryDAO categoryDAO = new CategoryDAO();
-                                                       cat = categoryDAO.getListCategory();
+                                                        CategoryDAO categoryDAO = new CategoryDAO();
+                                                        cat = categoryDAO.getListCategory();
                                                     %>
                                                     <
                                                     <select name="category" >
@@ -280,6 +286,12 @@ The above copyright notice and this permission notice shall be included in all c
                                                 </td>
                                                 <td >
                                                     <input type="text" name="quantity" style="border:none;text-indent:35px;" value="">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="sale" style="border:none;" value="">
+                                                </td>
+                                                <td>
+                                                    <input type="text" name="total" style="border:none;" value="" readonly="">
                                                 </td>
                                                 <td>
                                                     <input type="hidden" name="flowerId" value="">
@@ -339,6 +351,12 @@ The above copyright notice and this permission notice shall be included in all c
                                                         <input type="text" name="quantity" style="border:none;text-indent:35px;" value="<%=b.getQuantity()%>">
                                                     </td>
                                                     <td>
+                                                        <input type="text" name="sale" style="border:none;" value="<%=b.getSale()%>">
+                                                    </td>
+                                                    <td>
+                                                        <input type="text" name="total" style="border:none;" value="">
+                                                    </td>
+                                                    <td>
                                                         <input type="hidden" name="flowerId" value="<%=b.getfID()%>">
                                                         <input class="btn btn--blue" type="submit" value="Update" name="Update"  onclick="function update() {
                                                                     alert('Update Success!')
@@ -346,7 +364,10 @@ The above copyright notice and this permission notice shall be included in all c
                                                                 ;
                                                                 update()">
                                                         <input class="btn btn--red"  type="submit" value="Delete" name="Delete"  onclick="function deletee() {
-                                                                    alert('Delete Success!')};deletee()">
+                                                                    alert('Delete Success!')
+                                                                }
+                                                                ;
+                                                                deletee()">
                                                     </td>
                                                 </tr>
                                             </form>

@@ -22,11 +22,11 @@ public class Bill_DetailDAO {
         String sql = "INSERT INTO BillDetail VALUES(?,?,?,?,?)";
         try {
             PreparedStatement ps = connection.prepareCall(sql);
-            ps.setInt(2, bd.getBillID());
-            ps.setInt(3, bd.getfID());
-            ps.setFloat(4, bd.getPrice());
-            ps.setInt(5, bd.getQuantity());
-            ps.setString(6, bd.getStatus());
+            ps.setInt(1, bd.getBillID());
+            ps.setInt(2, bd.getfID());
+            ps.setFloat(3, bd.getPrice());
+            ps.setInt(4, bd.getQuantity());
+            ps.setString(5, bd.getStatus());
             ps.executeUpdate();
             ps.close();
             return true;
