@@ -70,8 +70,39 @@ public class CategoryDAO {
 
         return cateID;
     }
+     
+    static public void updateCategory(int cateID,String name){
+        Connection connection = DBConnect.getConnection();
+        String sql = 
+        "Update Category set cateID = ? , Name = ? WHERE cateID=?";
+        try {
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setInt(1, cateID);
+            ps.setString(2, name); 
+            ps.setInt(3, cateID);
 
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+
+     public void insertCategory(int cateID,String name){
+        Connection connection = DBConnect.getConnection();
+        String sql = 
+        "INSERT INTO Category VALUES(?,?);";
+        try {
+            PreparedStatement ps = connection.prepareCall(sql);
+            ps.setInt(1, cateID);
+            ps.setString(2, name);           
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(CategoryDAO.class.getName()).log(Level.SEVERE, null, e);
+        }
+    }
+     
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-            System.out.println(getCategoryID("Sinh nhật"));
+           updateCategory(1,"Sinh nhật 3");
+            System.out.println(getListCategory());
     }
 }

@@ -171,6 +171,12 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p>Flower Management</p>
                             </a>
                         </li>
+                        <li>
+                            <a href="categoryAdmin">
+                                <i class="nc-icon nc-tile-56"></i>
+                                <p>Category Management</p>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

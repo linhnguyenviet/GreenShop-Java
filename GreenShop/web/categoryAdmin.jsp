@@ -142,12 +142,6 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p>Flower Management</p>
                             </a>
                         </li>
-                         <li>
-                            <a href="categoryAdmin">
-                                <i class="nc-icon nc-tile-56"></i>
-                                <p>Category Management</p>
-                            </a>
-                        </li>
                     </ul>
                 </div>
             </div>
@@ -201,16 +195,16 @@ The above copyright notice and this permission notice shall be included in all c
           
           </div> -->
 
-                <%
-                    ArrayList<Flower> list = new ArrayList<Flower>();
-                    list = (ArrayList<Flower>) request.getAttribute("list");
+                <% ArrayList<Category> cat = new ArrayList<Category>();
+                    CategoryDAO categoryDAO = new CategoryDAO();
+                    cat = categoryDAO.getListCategory();
                 %>
                 <div class="content">
                     <div class="row">
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Flower Management</h4>
+                                    <h4 class="card-title">Category Management</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">
@@ -220,69 +214,23 @@ The above copyright notice and this permission notice shall be included in all c
                                                 Name
                                             </th>
                                             <th>
-                                                Image
-                                            </th>
-                                            <th>
-                                                Category
-                                            </th>
-                                            <th>
-                                                Price
-                                            </th>
-                                            <th >
-                                                Quantity
-                                            </th>
+                                                ID
+                                            </th>                                      
                                             <th >
                                                 Manage
                                             </th>
                                             </thead>
                                             <tbody>
-                                                <tr><button onclick = "toggleAdd()" class="btn btn--blue btn--big">Add Flower</button></tr>
+                                                <tr><button onclick = "toggleAdd()" class="btn btn--blue btn--big">Add Category</button></tr>
                                             <tr id ="addRow" class="hide" >
-                                            <form action="ManageFlower" method="get">
+                                            <form action="ManageCategory" method="get">
                                                 <td>
                                                     <input type="text" name="name" style="border:none;" value="">     
                                                 </td>
-                                                <td>
-                                                    <select id ="imgSelectAdd" name="img" >
-                                                        <%
-                                                            FlowerDAO f = new FlowerDAO();
-                                                            ArrayList<String> listImg = new ArrayList<String>();
-                                                            listImg = f.getListFlowerImages();
-                                                            for (int i = 0; i < listImg.size(); i++) {
-                                                        %>
-                                                        <option value="<%=listImg.get(i)%>">
-                                                            <%
-                                                                out.println(listImg.get(i));
-                                                            %>
-                                                        </option>
-                                                        <% } %>
-                                                    </select>
-                                                    <a id="showImgAdd" onclick="window.open(document.getElementById('imgSelectAdd').value, 'blank');" 
-                                                       style="cursor:pointer;">
-                                                        View</a>
-                                                </td>
-                                                <td>
-                                                    <% ArrayList<Category> cat = new ArrayList<Category>();
-                                                       CategoryDAO categoryDAO = new CategoryDAO();
-                                                       cat = categoryDAO.getListCategory();
-                                                    %>
-                                                    <
-                                                    <select name="category" >
-                                                        <%
-                                                            for (int i = 0; i < cat.size(); i++) {
-                                                        %>
-                                                        <option> <%=cat.get(i).getName()%> </option>
-                                                        <% } %>
-                                                    </select>  
-                                                </td>
-                                                <td>
-                                                    <input type="text" name="price" style="border:none;" value="">
-                                                </td>
                                                 <td >
-                                                    <input type="text" name="quantity" style="border:none;text-indent:35px;" value="">
+                                                    <input type="text" name="cateID" style="border:none;text-indent:35px;" value="">
                                                 </td>
                                                 <td>
-                                                    <input type="hidden" name="flowerId" value="">
                                                     <input class="btn btn--blue" type="submit" value="SUBMIT" name="Submit" onclick="function add() {
                                                                 alert('Add Success!')
                                                             }
@@ -292,61 +240,27 @@ The above copyright notice and this permission notice shall be included in all c
                                             </form>
                                             </tr>
                                             <%
-                                                int count = 0;
-                                                for (Flower b : list) {
-                                                    count++;
-
+                                                for (Category b : cat) {
                                             %>
-                                            <form action="ManageFlower" method="get">
+                                            <form action="ManageCategory" method="get">
                                                 <tr>
                                                     <td>
-                                                        <input type="text" name="name" style="border:none; width:150px;" value="<%=b.getfName()%>">     
-                                                    </td>
-                                                    <td>
-                                                        <select id ="imgSelect<%=count%>" name="img" >
-                                                            <option><%=b.getImg()%></option>
-                                                            <%
-                                                                listImg = f.getListFlowerImages();
-                                                                for (int i = 0; i < listImg.size(); i++) {
-                                                            %>
-                                                            <option value="<%=listImg.get(i)%>">
-                                                                <%
-                                                                    out.println(listImg.get(i));
-                                                                %>
-                                                            </option>
-                                                            <% }%>
-                                                        </select>
-                                                        <a id="showImg<%=count%>" onclick="window.open(document.getElementById('imgSelect<%=count%>').value, 'blank');" 
-                                                           style="cursor:pointer;">
-                                                            View</a>
-
-                                                    </td>
-                                                    <td>
-                                                        <select name="category" >
-                                                            <option><%=categoryDAO.getCategoryName(b.getCateID())%></option>
-                                                            <%
-                                                                for (int i = 0; i < cat.size(); i++)
-                                                                    if (!cat.get(i).getName().equals(categoryDAO.getCategoryName(b.getCateID()))) {
-                                                            %>
-                                                            <option> <%=cat.get(i).getName()%> </option>
-                                                            <% }%>
-                                                        </select>
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="price" style="border:none;" value="<%=(int) b.getPrice()%>">
+                                                        <input type="text" name="name" style="border:none; width:150px;" value="<%=b.getName()%>">     
                                                     </td>
                                                     <td >
-                                                        <input type="text" name="quantity" style="border:none;text-indent:35px;" value="<%=b.getQuantity()%>">
+                                                        <input type="text" name="cateId" style="border:none;text-indent:35px;" value="<%=b.getCateId()%>">
                                                     </td>
                                                     <td>
-                                                        <input type="hidden" name="flowerId" value="<%=b.getfID()%>">
                                                         <input class="btn btn--blue" type="submit" value="Update" name="Update"  onclick="function update() {
                                                                     alert('Update Success!')
                                                                 }
                                                                 ;
                                                                 update()">
                                                         <input class="btn btn--red"  type="submit" value="Delete" name="Delete"  onclick="function deletee() {
-                                                                    alert('Delete Success!')};deletee()">
+                                                                    alert('Delete Success!')
+                                                                }
+                                                                ;
+                                                                deletee()">
                                                     </td>
                                                 </tr>
                                             </form>
