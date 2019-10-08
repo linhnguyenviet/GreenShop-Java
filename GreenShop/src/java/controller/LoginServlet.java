@@ -26,7 +26,7 @@ public class LoginServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginServlet</title>");            
+            out.println("<title>Servlet LoginServlet</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet LoginServlet at " + request.getContextPath() + "</h1>");
@@ -47,61 +47,72 @@ public class LoginServlet extends HttpServlet {
         //response.setContentType("text/html");  
         CustomerDAO cus = new CustomerDAO();
         String password = request.getParameter("password");
-       String prePage = request.getParameter("prePage");
-        String email=request.getParameter("email");  
+        String prePage = request.getParameter("prePage");
+        String email = request.getParameter("email");
 
-        if(email != null && cus.isBlocked(email)) {
+        if (email != null && cus.isBlocked(email)) {
             request.setAttribute("msg1", "You have been blocked");
-           request.getRequestDispatcher("/login.jsp").forward(request, response);
-        }
-        else{
-             if (email != null && email.trim().length() > 0 && password != null && password.trim().length() > 0) {
-          System.out.println(email + ":" + password);
-          boolean success = controller.Auth.authenticate(email.trim(), password.trim());
-          
-          if (success) {
-            if (request.getParameter("remember") != null) {
-              String remember = request.getParameter("remember");
-              System.out.println("remember : " + remember);
-              Cookie cEmail = new Cookie("cookemail", email.trim());
-              Cookie cName = new Cookie("cookname", cus.getNameLogin(email.trim()));
-              Cookie cPassword = new Cookie("cookpass", email.trim());
-              Cookie cRemember = new Cookie("cookrem", remember.trim());
-              cEmail.setMaxAge(60 * 60 * 24 * 15);//15 days
-              cName.setMaxAge(60 * 60 * 24 * 15);
-              cPassword.setMaxAge(60 * 60 * 24 * 15);
-              cRemember.setMaxAge(60 * 60 * 24 * 15);
-              response.addCookie(cEmail);
-              response.addCookie(cName);
-              response.addCookie(cPassword);
-              response.addCookie(cRemember);
-            }
-            HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("sessuser", cus.getNameLogin(email.trim()));
-            httpSession.setAttribute("sessUserPhone", cus.getPhoneLogin(email.trim()));
-            httpSession.setAttribute("sessUserAdd", cus.getAddressLogin(email.trim()));
-            httpSession.setAttribute("sessUserID", cus.getIDLogin(email.trim()));
-            httpSession.setAttribute("sessUserEmail", email.trim());
+            request.getRequestDispatcher("/login.jsp").forward(request, response);
+        } else {
+            if (email != null && email.trim().length() > 0 && password != null && password.trim().length() > 0) {
+                System.out.println(email + ":" + password);
+                boolean success = controller.Auth.authenticate(email.trim(), password.trim());
 
+                if (success) {
+                    if (request.getParameter("remember") != null) {
+                        String remember = request.getParameter("remember");
+                        System.out.println("remember : " + remember);
+                        Cookie cEmail = new Cookie("cookemail", email.trim());
+                        Cookie cName = new Cookie("cookname", cus.getNameLogin(email.trim()));
+                        Cookie cPassword = new Cookie("cookpass", email.trim());
+                        Cookie cRemember = new Cookie("cookrem", remember.trim());
+                        cEmail.setMaxAge(60 * 60 * 24 * 15);//15 days
+                        cName.setMaxAge(60 * 60 * 24 * 15);
+                        cPassword.setMaxAge(60 * 60 * 24 * 15);
+                        cRemember.setMaxAge(60 * 60 * 24 * 15);
+                        response.addCookie(cEmail);
+                        response.addCookie(cName);
+                        response.addCookie(cPassword);
+                        response.addCookie(cRemember);
+                    }
+                    HttpSession httpSession = request.getSession();
+                    httpSession.setAttribute("sessuser", cus.getNameLogin(email.trim()));
+                    httpSession.setAttribute("sessUserPhone", cus.getPhoneLogin(email.trim()));
+                    httpSession.setAttribute("sessUserAdd", cus.getAddressLogin(email.trim()));
+                    httpSession.setAttribute("sessUserID", cus.getIDLogin(email.trim()));
+                    httpSession.setAttribute("sessUserEmail", email.trim());
+                    httpSession.setAttribute("sessUserRole", cus.getRoleLogin(email.trim()));
 
-            if(cus.getNameLogin(email.trim()).equals("admin")) {
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/dashboard.jsp");
+                    if (cus.getRoleLogin(email.trim()) != 0) {
+                        switch (cus.getRoleLogin(email.trim())) {
+                            case 1:
+                                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/dashboard.jsp");
+                                requestDispatcher.forward(request, response);
+                            case 2:
+                                requestDispatcher = request.getRequestDispatcher("/Sale");
+                                requestDispatcher.forward(request, response);
+                            case 3:
+                                requestDispatcher = request.getRequestDispatcher("/Shipper");
+                                requestDispatcher.forward(request, response);
+                            case 4:
+                                requestDispatcher = request.getRequestDispatcher("/index.jsp");
+                                requestDispatcher.forward(request, response);
+                        }
+                    }
+                    RequestDispatcher requestDispatcher1 = request.getRequestDispatcher("/header.jsp");
+                    response.sendRedirect(prePage);
+                } else {
+                    System.out.println("Email and password invalid.");
+                    request.setAttribute("msg", "Email and password invalid.");
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
+                    requestDispatcher.forward(request, response);
+                }
+            } else {
+                System.out.println("Email and Password are required fields.");
+                request.setAttribute("msg", "Email and Password are required fields.");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
                 requestDispatcher.forward(request, response);
             }
-            RequestDispatcher requestDispatcher1 = request.getRequestDispatcher("/header.jsp");
-            response.sendRedirect(prePage);
-          } else {
-            System.out.println("Email and password invalid.");
-            request.setAttribute("msg", "Email and password invalid.");
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
-            requestDispatcher.forward(request, response);
-          }
-        } else {
-          System.out.println("Email and Password are required fields.");
-          request.setAttribute("msg", "Email and Password are required fields.");
-          RequestDispatcher requestDispatcher = request.getRequestDispatcher("/login.jsp");
-          requestDispatcher.forward(request, response);
-        }
         }
     }
 
@@ -111,5 +122,3 @@ public class LoginServlet extends HttpServlet {
     }// </editor-fold>
 
 }
-
-

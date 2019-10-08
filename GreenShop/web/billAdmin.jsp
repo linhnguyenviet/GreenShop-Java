@@ -201,6 +201,14 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Order Management</h4>
+                                     <tr><%
+                                                if (session.getAttribute("sessUserRole") == null) {
+                                                %>
+                                                Nothing</a>
+                                                <% } else {%>
+
+                                            <a href="userInfo.jsp"><%=session.getAttribute("sessUserRole")%></a>             
+                                            <%}%></tr>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">

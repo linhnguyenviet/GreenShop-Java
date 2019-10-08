@@ -104,6 +104,14 @@
         <servlet-name>ManageCategory</servlet-name>
         <servlet-class>controller.ManageCategory</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Shipper</servlet-name>
+        <servlet-class>controller.Shipper</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Sale</servlet-name>
+        <servlet-class>controller.Sale</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>test</servlet-name>
         <url-pattern>/test</url-pattern>
@@ -207,6 +215,14 @@
     <servlet-mapping>
         <servlet-name>ManageCategory</servlet-name>
         <url-pattern>/ManageCategory</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Shipper</servlet-name>
+        <url-pattern>/Shipper</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Sale</servlet-name>
+        <url-pattern>/Sale</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

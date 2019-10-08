@@ -124,6 +124,7 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p>Dashboard</p>
                             </a>
                         </li>
+
                         <li>
                             <a href="billAdmin">
                                 <i class="nc-icon nc-bell-55"></i>
@@ -243,6 +244,14 @@ The above copyright notice and this permission notice shall be included in all c
                                             </thead>
                                             <tbody>
                                                 <tr><button onclick = "toggleAdd()" class="btn btn--blue btn--big">Add Flower</button></tr>
+                                            <tr><%
+                                                if (session.getAttribute("sessUserRole") == null) {
+                                                %>
+                                                Nothing</a>
+                                                <% } else {%>
+
+                                            <a href="userInfo.jsp"><%=session.getAttribute("sessUserRole")%></a>             
+                                            <%}%></tr>
                                             <tr id ="addRow" class="hide" >
                                             <form action="ManageFlower" method="get">
                                                 <td>
