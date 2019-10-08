@@ -96,6 +96,14 @@
         <servlet-name>editOrder</servlet-name>
         <servlet-class>controller.editOrder</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>categoryAdmin</servlet-name>
+        <servlet-class>controller.categoryAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ManageCategory</servlet-name>
+        <servlet-class>controller.ManageCategory</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>test</servlet-name>
         <url-pattern>/test</url-pattern>
@@ -191,6 +199,14 @@
     <servlet-mapping>
         <servlet-name>editOrder</servlet-name>
         <url-pattern>/editOrder</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>categoryAdmin</servlet-name>
+        <url-pattern>/categoryAdmin</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ManageCategory</servlet-name>
+        <url-pattern>/ManageCategory</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
