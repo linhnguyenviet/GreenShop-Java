@@ -119,6 +119,9 @@ The above copyright notice and this permission notice shall be included in all c
                 <div class="sidebar-wrapper">
                     <ul class="nav">
                         <li >
+                            <%
+                                if (session.getAttribute("sessUserRole").toString().equals("1")) {
+                            %>
                             <a href="dashboard.jsp">
                                 <i class="nc-icon nc-bank"></i>
                                 <p>Dashboard</p>
@@ -149,6 +152,13 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p>Category Management</p>
                             </a>
                         </li>
+                        <%} else {%>
+                        <li class="active ">
+                            <a href="flowerAdmin">
+                                <i class="nc-icon nc-tile-56"></i>
+                                <p>Flower Management</p>
+                            </a>
+                        </li><%}%>
                     </ul>
                 </div>
             </div>
@@ -244,14 +254,6 @@ The above copyright notice and this permission notice shall be included in all c
                                             </thead>
                                             <tbody>
                                                 <tr><button onclick = "toggleAdd()" class="btn btn--blue btn--big">Add Flower</button></tr>
-                                            <tr><%
-                                                if (session.getAttribute("sessUserRole") == null) {
-                                                %>
-                                                Nothing</a>
-                                                <% } else {%>
-
-                                            <a href="userInfo.jsp"><%=session.getAttribute("sessUserRole")%></a>             
-                                            <%}%></tr>
                                             <tr id ="addRow" class="hide" >
                                             <form action="ManageFlower" method="get">
                                                 <td>

@@ -1,3 +1,5 @@
+<%@page import="dao.CategoryDAO"%>
+<%@page import="model.Category"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="model.Cart"%>
 <%@page import="dao.FlowerDAO"%>
@@ -144,7 +146,9 @@
             Flower flower = new Flower();
             if(request.getAttribute("flower") != null) 
             flower = (Flower)request.getAttribute("flower");
-            
+            CategoryDAO categoryDAO = new CategoryDAO();
+            ArrayList<Category> cat =  categoryDAO.getListCategory();
+                                                   
         %>
         <div class="productDetail">
             <div class="left">
@@ -166,13 +170,13 @@
                     <p><%=flower.getPrice()%> đ</p>
                 </div>
                 <div class="category">
-                    <p><%=flower.getCategory()%></p>
+                    <p><%=categoryDAO.getCategoryName(flower.getCateID())%></p>
                 </div>
                 <div>
                     <p style="font-size: 1.1em;">
-                    Cây cảnh được bài trí có khi nhằm thể hiện một ý tưởng của người trồng qua cách xếp đặt mà vẫn giữ được vẻ tự nhiên của lá. Thân cây được uốn theo một hình dáng nào đó, còn gọi là thế, kết hợp với chậu, đất hay nước là môi trường dinh dưỡng cho thực vật ấy. </p>
+                        Cây cảnh được bài trí có khi nhằm thể hiện một ý tưởng của người trồng qua cách xếp đặt mà vẫn giữ được vẻ tự nhiên của lá. Thân cây được uốn theo một hình dáng nào đó, còn gọi là thế, kết hợp với chậu, đất hay nước là môi trường dinh dưỡng cho thực vật ấy. </p>
                 </div>
-                <% if (Integer.parseInt(flower.getQuantity()) <= 0) {
+                <% if (flower.getQuantity()<= 0) {
                 %>
                 <div >
                     <p style="color:blue;margin-top:40px;">  Not Available </p>

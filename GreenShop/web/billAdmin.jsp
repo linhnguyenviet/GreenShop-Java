@@ -104,14 +104,20 @@ The above copyright notice and this permission notice shall be included in all c
                         Creative Tim
                     </a>
                 </div>
+
+
                 <div class="sidebar-wrapper">
                     <ul class="nav">
                         <li >
+                            <%
+                                if (session.getAttribute("sessUserRole").toString().equals("1")) {
+                            %>
                             <a href="dashboard.jsp">
                                 <i class="nc-icon nc-bank"></i>
                                 <p>Dashboard</p>
                             </a>
                         </li>
+
                         <li class="active ">
                             <a href="billAdmin" >
                                 <i class="nc-icon nc-bell-55"></i>
@@ -136,6 +142,13 @@ The above copyright notice and this permission notice shall be included in all c
                                 <p>Category Management</p>
                             </a>
                         </li>
+                        <%} else {%>
+                        <li class="active ">
+                            <a href="billAdmin" >
+                                <i class="nc-icon nc-bell-55"></i>
+                                <p>Order</p>
+                            </a>
+                        </li><%}%>
                     </ul>
                 </div>
             </div>
@@ -201,14 +214,7 @@ The above copyright notice and this permission notice shall be included in all c
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">Order Management</h4>
-                                     <tr><%
-                                                if (session.getAttribute("sessUserRole") == null) {
-                                                %>
-                                                Nothing</a>
-                                                <% } else {%>
 
-                                            <a href="userInfo.jsp"><%=session.getAttribute("sessUserRole")%></a>             
-                                            <%}%></tr>
                                 </div>
                                 <div class="card-body">
                                     <div class="table-responsive">

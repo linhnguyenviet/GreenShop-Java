@@ -83,8 +83,6 @@ public class Sale extends HttpServlet {
         FlowerDAO f = new FlowerDAO();
         CustomerDAO cus = new CustomerDAO();
         String email = request.getParameter("email");
-//        HttpSession session = request.getSession();
-//        int urole = (int)session.getAttribute("sessUserRole");
         ArrayList<Flower> list = new ArrayList<Flower>();
         int pages = 0;
         try {
