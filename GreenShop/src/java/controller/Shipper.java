@@ -75,7 +75,6 @@ public class Shipper extends HttpServlet {
             throws ServletException, IOException {
         Bill_DetailDAO f = new Bill_DetailDAO();
         ArrayList<Bill_Detail> list = new ArrayList<Bill_Detail>();
-
         list = f.getAllBillDetails();
         request.setAttribute("list", list);
 
