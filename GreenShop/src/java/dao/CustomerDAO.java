@@ -88,7 +88,7 @@ public class CustomerDAO {
 
     public int sizeOfCustomer() {
         Connection connection = DBConnect.getConnection();
-        String sql = "SELECT * FROM Customer";
+        String sql = "SELECT * FROM Customer where Role = 4";
         int count = 0;
         try {
             Statement s = connection.createStatement();
