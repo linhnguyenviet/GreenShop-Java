@@ -4,6 +4,8 @@
     Author     : HP
 --%>
 
+<%@page import="dao.CategoryDAO"%>
+<%@page import="model.Category"%>
 <%@page import="model.Cart"%>
 <%@page import="model.Flower"%>
 <%@page import="java.util.ArrayList"%>
@@ -179,9 +181,13 @@
                         <ul>
                             <li>CATEGORY</li>
                             <li><input class="cartBtn"  type="submit" name="filter" value="All" /></li>
-                            <li><input class="cartBtn"  type="submit" name="filter" value="Sinh nhật" /></li>
-                            <li><input class="cartBtn"  type="submit" name="filter" value="Tiệc cưới" /></li>
-                            <li><input class="cartBtn"  type="submit" name="filter" value="Trang trí" /></li>
+                                <% ArrayList<Category> cat = new ArrayList<Category>();
+                                    CategoryDAO categoryDAO = new CategoryDAO();
+                                    cat = categoryDAO.getListCategory();
+                                    for (int i = 0; i < cat.size(); i++) {
+                                %>
+                            <li><input class="cartBtn"  type="submit" name="filter" value="<%=cat.get(i).getName()%>" /></li>
+                                <% } %>
                             <li>PRICE</li>
 
                             <li><input class="cartBtn"  type="submit" name="filter" value="100.000đ-200.000đ" /></li>
@@ -211,7 +217,9 @@
             <div class="grid">
                 <%
 
+                    cat = categoryDAO.getListCategory();
                     for (Flower b : list) {
+
                         id++;
                 %>
                 <div class="product">  
@@ -222,12 +230,12 @@
                         <p> <a href="productDetail?id=<%=id%>&filter=<%=filter%>"><%=b.getfName()%></a>  </p>
                     </div>
                     <div class="product__category">
-                        <p>  <%=b.getCategory()%> </p>
+                        <p>  <%=categoryDAO.getCategoryName(b.getCateID())%>  </p>
                     </div>
                     <div class="product__price">
                         <p>  <%=Float.toString(b.getPrice())%> </p>
                     </div>
-                    <% if (Integer.parseInt(b.getQuantity()) <= 0) {
+                    <% if (b.getQuantity() <= 0) {
                     %>
                     <div >
                         <p style="color:gray;">  Sold Out </p>
@@ -235,7 +243,6 @@
                     <%
                     } else {
                     %>
-
                     <div>
                         <form action ="HandleCartInPage" method="get">
                             <input type="hidden" name="event" value="add">
@@ -260,7 +267,13 @@
 
                     int pages = (Integer) request.getAttribute("page");
                     int count = 0;
-                    for (int i = 0; i <= list.size() / 9; i++) {
+                    int length;
+                    if (list.size() / 9 < 1) {
+                        length = 0;
+                    } else {
+                        length = list.size() / 9 + 1;
+                    }
+                    for (int i = 0; i <= length; i++) {
                         count++;
                         if (count == indexx) {
                 %>

@@ -360,10 +360,10 @@ The above copyright notice and this permission notice shall be included in all c
                                                     </td>
                                                     <td >
                                                         <input type="text" name="quantity" style="border:none;text-indent:35px;" value="<%=b.getQuantity()%>">
-                                                    </td>
-                                                    <td>
-                                                        <input type="text" name="sale" style="border:none;" value="<%=b.getSale()%>">
-                                                    </td>
+                                                        </td>
+                                                        <td>
+                                                            <input type="text" name="sale" style="border:none;" value="<%=b.getSale()%>">
+                                                        </td>
                                                     <td>
                                                         <input type="text" name="total" style="border:none;" value="">
                                                     </td>
