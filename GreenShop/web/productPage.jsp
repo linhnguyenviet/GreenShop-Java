@@ -173,11 +173,17 @@
                 <div class="category">
                     <form action="Filter" method="get">
                         <ul>
+
                             <li>CATEGORY</li>
                             <li><input class="cartBtn"  type="submit" name="filter" value="All" /></li>
-                            <li><input class="cartBtn"  type="submit" name="filter" value="Sinh nhật" /></li>
-                            <li><input class="cartBtn"  type="submit" name="filter" value="Tiệc cưới" /></li>
-                            <li><input class="cartBtn"  type="submit" name="filter" value="Trang trí" /></li>
+                                <% ArrayList<Category> cat = new ArrayList<Category>();
+                                    CategoryDAO categoryDAO = new CategoryDAO();
+                                    cat = categoryDAO.getListCategory();
+                                    for (int i = 0; i < cat.size(); i++)
+                                    {
+                                %>
+                            <li><input class="cartBtn"  type="submit" name="filter" value="<%=cat.get(i).getName()%>" /></li>
+                            <% } %>
                             <li>PRICE</li>
                             <li><input class="cartBtn"  type="submit" name="filter" value="100.000đ-200.000đ" /></li>
                             <li><input class="cartBtn"  type="submit" name="filter" value="200.000đ-300.000đ" /></li>
@@ -206,12 +212,11 @@
             <div class="grid">
                 <%
                     String uri = request.getRequestURI();
-                    String pageName = uri.substring(uri.lastIndexOf("/")+1);
+                    String pageName = uri.substring(uri.lastIndexOf("/") + 1);
                     Category category = new Category();
-                    CategoryDAO categoryDAO = new CategoryDAO();                   
                     for (Flower b : list) {
                         id++;
-                        
+
                 %>
                 <div class="product">  
                     <div class="product__img">

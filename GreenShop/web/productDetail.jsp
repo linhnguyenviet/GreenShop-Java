@@ -144,8 +144,11 @@
 
         <%
             Flower flower = new Flower();
-            if(request.getAttribute("flower") != null) 
+            if(request.getAttribute("flower") != null) {
+                
             flower = (Flower)request.getAttribute("flower");
+            }
+            
             CategoryDAO categoryDAO = new CategoryDAO();
             ArrayList<Category> cat =  categoryDAO.getListCategory();
                                                    

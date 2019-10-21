@@ -159,7 +159,7 @@ public Flower getFlowerDetail(String id) throws ClassNotFoundException, SQLExcep
 public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQLException, ClassNotFoundException {
         Connection con = new DBConnect().getConnection();
 //        String sql = "SELECT * FROM Flower WHERE fID BETWEEN ? AND ?;";
-        String sql = "SELECT * FROM Flower ORDER BY fName ASC , Category ASC";
+        String sql = "SELECT * FROM Flower ORDER BY fName ASC ";
         PreparedStatement ps = (PreparedStatement) con.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Flower> list = new ArrayList<>();
@@ -295,10 +295,10 @@ public ArrayList<Flower> getSortName (int firstResult, int maxResult) throws SQL
         return list;
 }
     
-    public ArrayList<Flower> getListFlowerPagesCategory (int firstResult, int maxResult, String category) throws SQLException, ClassNotFoundException {
+    public ArrayList<Flower> getListFlowerPagesCategory (int firstResult, int maxResult, int category) throws SQLException, ClassNotFoundException {
         Connection con = new DBConnect().getConnection();
 //        String sql = "SELECT * FROM Flower WHERE fID BETWEEN ? AND ?;";
-        String sql = "SELECT * FROM Flower Where Category LIKE N'%"+category+"%'"; ;
+        String sql = "SELECT * FROM Flower Where cateID ="+category;
         PreparedStatement ps = (PreparedStatement) con.prepareCall(sql);
         ResultSet rs = ps.executeQuery();
         ArrayList<Flower> list = new ArrayList<>();
@@ -430,7 +430,7 @@ public ArrayList<Value> getValueCategory() throws ClassNotFoundException, SQLExc
         FlowerDAO f1 = new FlowerDAO();
         ArrayList<Flower> list = new ArrayList<Flower>();
 
-        list =f1.getFilterPrice(0, 100, 100000, 500000);
+        list =f1.getListFlowerPagesCategory(0,100,2);
         for ( Flower b : list) {
             System.out.println(b.getfName() + "     " + b.getQuantity());
         }

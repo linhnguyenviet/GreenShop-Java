@@ -86,27 +86,7 @@ response.setContentType("text/html;charset=UTF-8");
 
 //                            } 
             }
-                            
-//            else {
-//                 if (low != null ) 
-//                            {
-//                                list = f.getSortPriceASC(9 * (indexx - 1) + 1, 9 * (indexx - 1) + 9);
-//                                request.setAttribute("low", low);
-//
-//                            }   
-//                            else if (name != null ) 
-//                            { 
-//                                list = f.getSortName(9 * (indexx - 1) + 1, 9 * (indexx - 1) + 9);
-//                                request.setAttribute("x", name);
-//
-//                            }
-//                            else 
-//                            { 
-//                                list = f.getSortPriceDes(9 * (indexx - 1) + 1, 9 * (indexx - 1) + 9);
-//                                request.setAttribute("sort", high);
-//
-//                            } 
-//            }
+                   
 //          
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(productPage.class.getName()).log(Level.SEVERE, null, ex);
