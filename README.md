@@ -7,12 +7,12 @@ We use Java to create a MVC pages about e-commerce.
 + SQL Server
 
 ## Features : 
-+ Creater account, buying products
-+
++ Sign Up, Sign In
++ Buying Plants 
++ Manage Orders
++ Admin management for shop
++ Comment, feedback
 
-After making this, i have learnd :
-+ How MVC works and how to implement it it our project
-+ How to work as a team 
-+ How to support, motivate people 
-+ The basic about authentication, authorization
-+ How to work with database.
+## Using guides :
++ Select what you want, add to your cart.
++ Then sign in ( or sign up if you dont have an account yet ) and checkout. Happy shopping !
