@@ -115,7 +115,7 @@ public class CategoryDAO {
         }
     }
      
-     public ArrayList<Value> getValueCategory() throws ClassNotFoundException, SQLException {
+     public static ArrayList<Value> getValueCategory() throws ClassNotFoundException, SQLException {
        
         ArrayList<Value> list = new ArrayList<Value>();
         Set<String> set = new HashSet<String>();
@@ -159,7 +159,6 @@ public class CategoryDAO {
     }
      
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
-           updateCategory(1,"Sinh nhật 3");
-            System.out.println(getListCategory());
+            System.out.println(getValueCategory().get(0).getName());
     }
 }

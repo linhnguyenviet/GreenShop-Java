@@ -1,21 +1,18 @@
-# GREEN SHOP - JAVA
+### GREEN SHOP - JAVA
 We use Java to create a MVC pages about e-commerce. 
 
-Technology : 
+## Technology : 
 + Java JSP/Servlet
 + HTML/CSS/JavaScript
 + SQL Server
 
-My roles : 
-+ Team Leader
-+ Make the UI
-+ Manage plants in Admin ( CRUD )
-+ Statistics show
-+ Front End support ( JS handle event problems )
+## Features : 
++ Sign Up, Sign In
++ Buying Plants 
++ Manage Orders
++ Admin management for shop
++ Comment, feedback
 
-After making this, i have learnd :
-+ How MVC works and how to implement it it our project
-+ How to work as a team 
-+ How to support, motivate people 
-+ The basic about authentication, authorization
-+ How to work with database.
+## Using guides :
++ Select what you want, add to your cart.
++ Then sign in ( or sign up if you dont have an account yet ) and checkout. Happy shopping ^_^
