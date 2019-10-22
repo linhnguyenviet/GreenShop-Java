@@ -15,4 +15,4 @@ We use Java to create a MVC pages about e-commerce.
 
 ## Using guides :
 + Select what you want, add to your cart.
-+ Then sign in ( or sign up if you dont have an account yet ) and checkout. Happy shopping ^^
++ Then sign in ( or sign up if you dont have an account yet ) and checkout. Happy shopping ^_^
