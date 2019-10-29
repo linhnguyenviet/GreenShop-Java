@@ -45,6 +45,8 @@ public class productDetail extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         PrintWriter out = response.getWriter();
         ArrayList<Flower> list = new ArrayList<Flower>();
+        ArrayList<Flower> list2 = new ArrayList<Flower>();
+
         Flower flower = new Flower();
         FlowerDAO f = new FlowerDAO();
         CategoryDAO categoryDAO = new CategoryDAO();
@@ -89,6 +91,9 @@ public class productDetail extends HttpServlet {
         if ((request.getParameter("filter")) != null) {
 
             filter = request.getParameter("filter");
+
+            list2 = (ArrayList<Flower>)request.getAttribute("list2");
+
             int cateId = 0;
             try {
                 cateId = categoryDAO.getCategoryID(filter);
@@ -212,6 +217,8 @@ public class productDetail extends HttpServlet {
         }
 
         request.setAttribute("flower", flower);
+        request.setAttribute("list", list2);
+
         request.getRequestDispatcher("productDetail.jsp").forward(request, response);
 
     }

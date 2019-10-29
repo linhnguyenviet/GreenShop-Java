@@ -25,7 +25,7 @@ import model.Value;
  */
 public class CategoryDAO {
 
-    public static String getCategoryName(int id) {
+    public String getCategoryName(int id) {
         String name = "";
         try {
             Connection con = DBConnect.getConnection();
@@ -60,7 +60,7 @@ public class CategoryDAO {
         return list;
     }
     
-     public static int getCategoryID (String name) throws SQLException, ClassNotFoundException {
+     public int getCategoryID (String name) throws SQLException, ClassNotFoundException {
         int cateID = 0 ;
         Connection con = new DBConnect().getConnection();
         String sql = "SELECT cateID FROM Category WHERE Name = N'"+name+"'";

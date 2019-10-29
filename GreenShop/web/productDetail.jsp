@@ -148,11 +148,18 @@
                 
             flower = (Flower)request.getAttribute("flower");
             }
+            ArrayList<Flower> list = new ArrayList<Flower>();
+            if(request.getAttribute("list") != null) {
+                
+            list = (ArrayList<Flower>)request.getAttribute("list");
+            }
             
             CategoryDAO categoryDAO = new CategoryDAO();
             ArrayList<Category> cat =  categoryDAO.getListCategory();
                                                    
         %>
+        <%=list.size()%>
+        <%="ALO"%>
         <div class="productDetail">
             <div class="left">
                 <div class="detailImg">
