@@ -14,6 +14,68 @@
     cursor: pointer;
 }
 
+        .cartBtn  {
+            width:80px;
+            height:40px;
+            border-radius:3px;
+            border:1px solid #3fb871;
+            background: #01C19C;
+            color:white;
+            font-size:13px;
+            cursor: pointer;
+            margin-top: 13px;
+            }
+        .input{
+            width: 100%;
+            height: 35px;
+            font-size: 15px;
+            background:#F7F7F7;
+            border:1px solid #cccccc;
+            text-indent: 5px;
+        }
+        .loginWrap {
+            width: 80%;
+            margin: auto;
+            border: 1px solid gray;
+            display:flex;
+            margin-top:60px;
+            margin-bottom:40px;
+            position:relative;
+        }
+        .loginImg {
+            width: 50%;
+        }
+        .loginImg img {
+            width:100%;
+            height:100%;
+        }
+        body {
+            background:#F8F8F8;
+        }
+        .loginContent {
+            background:white;
+            width: 50%;
+            padding-top:50px;
+        }
+        .loginForm {
+            width: 50%;
+        }
+        .loginContent__inner {
+            width: 50%;
+            margin : 0 auto;
+        }
+        .lightGreen {
+            color: #01C19C;
+            background: white;
+            margin-left:5px;
+        }
+        .btn--back {
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            cursor:pointer;
+        }
+
 @media only screen and (max-width: 768px)  {
   .main{
       margin-top: 155px;

@@ -1,3 +1,7 @@
+<%@page import="model.Comment"%>
+<%@page import="dao.CustomerDAO"%>
+<%@page import="model.Customer"%>
+<%@page import="dao.CommentDAO"%>
 <%@page import="dao.CategoryDAO"%>
 <%@page import="model.Category"%>
 <%@page import="java.util.ArrayList"%>
@@ -220,6 +224,51 @@
                     }
                 %>
             </div>       
+            
+            
+              <div>
+            <h1>Bình Luận</h1>
+          
+                
+                <% CommentDAO cd = new CommentDAO();
+                   Customer cus = new Customer();
+                   CustomerDAO cusdao = new CustomerDAO();
+                   
+                    ArrayList<Comment> bList = cd.getComment(flower.getfID());
+                    for (int i = 0; i < bList.size(); i++) {
+                        out.print("<fieldset>");
+                        out.print("<legend>");
+                        int cID = bList.get(i).getcID();
+                        out.print(cusdao.getcName(cID));
+                        out.print("</legend>");
+                        out.print("<h6>");
+                        out.print(bList.get(i).getCommentary());
+                        out.print("</h6>");
+                        out.print("</fieldset>");
+                       
+                      
+                    }
+                    %>
+                      <form action ="AddComment" method="post">
+                    <%
+                    
+                    
+             
+                     if(session.getAttribute("sessuser") != null){
+                         
+                         out.print(session.getAttribute("sessuser"));
+                         out.print("<input type=\"hidden\" name=\"fID\" value=\""+flower.getfID()+"\">");
+                         out.print("<input type=\"hidden\" name=\"cID\" value=\""+session.getAttribute("sessUserID").toString()+"\">");
+                         out.print("<input type=\"text\" name=\"Comment\" style=\"width:600px;height:180px;\" placeholder=\"input your comment\">");
+                         out.print("<button type=\"submit\">OK</button>");
+                     }
+                %>
+                
+                      </form>
+
+            </div>
+
+            
         </div>
         <%@ include file="/Structure/footer.jsp" %>
 

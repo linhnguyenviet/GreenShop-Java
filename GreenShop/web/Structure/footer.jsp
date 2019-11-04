@@ -20,36 +20,7 @@
     </head>
     <body>
         <div style="background:#313131">
-             <div class="TopFooter">
-                <div>
-                    <h6>KÊNH THÔNG TIN TỪ CHÚNG TÔI
-            <br></br>
-                        <span>
-                                <i class="fab fa-facebook-f" ></i>
-                                <i class="fab fa-twitter" ></i>
-                                <i class="fab fa-linkedin-in"></i>
-                                <i class="fab fa-instagram"></i>
-                        </span>
-                    </h6>
-                </div>
 
-                <div  >
-                    <h6>ĐĂNG KÍ NHẬN EMAIL</h6>
-                </div>
-
-                <div>
-                    <form >
-                        <input
-                            type="text"
-                            placeholder="  Tìm kiếm.."
-                            name="search"
-                        />
-                        <button type="button">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </form>
-                </div>
-            </div>
              <div style="width:100%; background:gray;color:transparent;max-height:0.8px;margin-bottom:40px;">a</div>
             <div class="BottomFooter">
             <div>
