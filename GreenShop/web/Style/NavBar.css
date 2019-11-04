@@ -1,6 +1,7 @@
 
 .NavBar {
   background: #3FB871;
+ 
 }
 
 .NavBar ul {
@@ -12,15 +13,21 @@
   background-color: #3FB871;
   margin: auto;
   justify-content: left;   
+  text-align: center;
+  }
 
+  #displayNone{
+      display:none;
   }
   .NavBar li  {
+    width:20%;
     cursor: pointer;
     display: inline-block;
     color: white;
     padding: 14px 16px;
     text-decoration: none;
     transition: 0.5s;
+     font-family: Arial, Helvetica, sans-serif;
   }
   .NavBar li:hover {
     background:rgb(49, 139, 97);
@@ -41,6 +48,9 @@
     display:none;
   }
   @media only screen and (max-width: 768px)  {
+    #displayNone{
+      display:block;
+  }
     .NavBar ul {
       width: 100vw;
       position:relative;

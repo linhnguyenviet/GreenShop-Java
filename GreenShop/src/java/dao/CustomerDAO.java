@@ -367,6 +367,25 @@ public class CustomerDAO {
         }
         return email;
     }
+        public String getcName(int cID) {
+        Connection conn = DBConnect.getConnection();
+        String sql = "SELECT cName FROM Customer WHERE cID ='" + cID + "'";
+        PreparedStatement ps;
+        String email = null;
+        try {
+            ps = conn.prepareCall(sql);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                email = rs.getString("cName");
+            }
+            rs.close();
+            conn.close();
+            return email;
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return email;
+    }
 //     public boolean deleteCustomerID(String cID) {
 //        try {
 //            Connection con = DBConnect.getConnection();

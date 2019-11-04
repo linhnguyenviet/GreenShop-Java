@@ -1,7 +1,12 @@
+body{
+     font-family: Arial, Helvetica, sans-serif;
+     margin:0;
+}
 .HeaderImg {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .HeaderImg-wrap {
   width: 80%;
@@ -22,6 +27,9 @@
 .HeaderImg-inner span {
   font-size: 0.8em;
   color: gray;
+}
+.HeaderImg-cart p{
+     font-family: Arial, Helvetica, sans-serif;
 }
 .HeaderImg-cart {
   display: inline-block;
