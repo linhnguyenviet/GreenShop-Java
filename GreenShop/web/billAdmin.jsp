@@ -34,6 +34,7 @@ The above copyright notice and this permission notice shall be included in all c
 <html lang="en">
 
     <head>
+    
         <meta charset="utf-8" />
         <link rel="apple-touch-icon" sizes="76x76" href="./paper-dashboard-master/assets/img/apple-icon.png">
         <link rel="icon" type="image/png" href="./paper-dashboard-master/assets/img/favicon.png">
