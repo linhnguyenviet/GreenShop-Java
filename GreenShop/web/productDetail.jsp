@@ -145,20 +145,24 @@
         <%
             Flower flower = new Flower();
             if(request.getAttribute("flower") != null) {
-                
-            flower = (Flower)request.getAttribute("flower");
+                flower = (Flower)request.getAttribute("flower");
             }
             ArrayList<Flower> list = new ArrayList<Flower>();
             if(request.getAttribute("list") != null) {
-                
-            list = (ArrayList<Flower>)request.getAttribute("list");
+                list = (ArrayList<Flower>)request.getAttribute("list");
             }
-            
+            String filterTest="";
+             if(request.getAttribute("filter") != null) {
+                filterTest = (String)request.getAttribute("filter");
+            }
+            String filter;
+            filter = (String)request.getParameter("filter");
             CategoryDAO categoryDAO = new CategoryDAO();
             ArrayList<Category> cat =  categoryDAO.getListCategory();
                                                    
         %>
-        <%=list.size()%>
+        <%=filterTest.equals("400.000đ-500.000đ")%>
+        <%=flower.getfName()%>
         <%="ALO"%>
         <div class="productDetail">
             <div class="left">

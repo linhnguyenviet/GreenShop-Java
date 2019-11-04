@@ -92,8 +92,6 @@ public class productDetail extends HttpServlet {
 
             filter = request.getParameter("filter");
 
-            list2 = (ArrayList<Flower>)request.getAttribute("list2");
-
             int cateId = 0;
             try {
                 cateId = categoryDAO.getCategoryID(filter);
@@ -102,98 +100,61 @@ public class productDetail extends HttpServlet {
             } catch (ClassNotFoundException ex) {
                 Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if (filter.equals("All")) {
-                try {
-                    list = f.getListFlowerPagesCategory(0, 100, 1);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                flower = list.get(idd - 1);
 
-            } else if (filter.equals("Tiệc cưới")) {
-                try {
-                    list = f.getListFlowerPagesCategory(0, 100, cateId);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                flower = list.get(idd - 1);
+            try {
+                for (int i = 0; i < categoryDAO.getListCategory().size(); i++) {
+                    if (filter.equals("All")) {
+                        list = f.getListCategory();
+                    }
+                    if (filter.equals(categoryDAO.getListCategory().get(i).getName())) {
+                        list = f.getListFlowerPagesCategory(0, 100, categoryDAO.getListCategory().get(i).getCateId());
+                    }
 
-            } else if (filter.equals("Tiệc cưới")) {
-                try {
-                    list = f.getListFlowerPagesCategory(0, 100, cateId);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                flower = list.get(idd - 1);
-
-            } else if (filter.equals("Trang trí")) {
-                try {
-                    list = f.getListFlowerPagesCategory(0, 100, cateId);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                flower = list.get(idd - 1);
-
-            } else if (filter.equals("Sinh nhật")) {
-                try {
-                    list = f.getListFlowerPagesCategory(0, 100, cateId);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                flower = list.get(idd - 1);
-
-            } else if (filter.equals("100.000đ-500.000đ")) {
-                try {
-                    list = f.getFilterPrice(0, 100, 100000, 500000);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                flower = list.get(idd - 1);
-
-            } else if (filter.equals("500.000đ-1.000.000đ")) {
-                try {
-                    list = f.getFilterPrice(0, 100, 500000, 1000000);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                flower = list.get(idd - 1);
-
-            } else if (filter.equals("1.000.000đ-1.500.000đ")) {
-                try {
-                    list = f.getFilterPrice(0, 100, 1000000, 1500000);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                flower = list.get(idd - 1);
-
-            } else if (filter.equals("1.500.000đ-2.000.000đ")) {
-                try {
-                    list = f.getFilterPrice(0, 100, 1500000, 2000000);
-                } catch (SQLException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                flower = list.get(idd - 1);
-
+            } catch (SQLException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
             }
+            if (filter.equals("100.000đ-200.000đ")) {
+            try {
+                list = f.getFilterPrice(0, 100, 100000, 200000);
+            } catch (SQLException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else if (filter.equals("200.000đ-300.000đ")) {
+            try {
+                list = f.getFilterPrice(0, 100, 200000, 300000);
+            } catch (SQLException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else if (filter.equals("300.000đ-400.000đ")) {
+            try {
+                list = f.getFilterPrice(0, 100, 300000, 400000);
+            } catch (SQLException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        } else if (filter.equals("400.000đ-500.000đ")) {
+            try {
+                list = f.getFilterPrice(0, 100, 400000, 500000);
+            } catch (SQLException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
         }
+        } 
+
         if ((request.getParameter("searchValue")) != null) {
             searchValue = request.getParameter("searchValue");
             try {
@@ -203,7 +164,6 @@ public class productDetail extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
             }
-            flower = list.get(idd - 1);
         }
         if ((request.getParameter("pageName")) != null) {
             try {
@@ -213,11 +173,12 @@ public class productDetail extends HttpServlet {
             } catch (SQLException ex) {
                 Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
             }
-            flower = list.get(idd - 1);
         }
+        request.setAttribute("id", id);
+        flower = list.get(idd - 1);
 
         request.setAttribute("flower", flower);
-        request.setAttribute("list", list2);
+        request.setAttribute("list", list);
 
         request.getRequestDispatcher("productDetail.jsp").forward(request, response);
 
