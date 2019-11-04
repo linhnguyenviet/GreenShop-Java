@@ -1,5 +1,6 @@
 package controller;
 
+import dao.CategoryDAO;
 import dao.FlowerDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -53,6 +54,7 @@ public class HandleCartInPage extends HttpServlet {
         ArrayList<Flower> list = new ArrayList<Flower>();
 
         Cart cart = (Cart) session.getAttribute("cart");
+        CategoryDAO cateDAO = new CategoryDAO();
         PrintWriter out = response.getWriter();
         out.println(fId + event);
         boolean check = true;
@@ -63,6 +65,7 @@ public class HandleCartInPage extends HttpServlet {
             int idd = Integer.parseInt(fId);
             String sort = "";
             String filter = "";
+            int cateID = cateDAO.getCategoryID(filter);
             String searchValue = "";
             String pageName = "";
             if ((request.getParameter("sort")) != null) {
@@ -115,17 +118,7 @@ public class HandleCartInPage extends HttpServlet {
 
                 } else if (filter.equals("Tiệc cưới")) {
                     try {
-                        list = f.getListFlowerPagesCategory(0, 100, filter);
-                    } catch (SQLException ex) {
-                        Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                    } catch (ClassNotFoundException ex) {
-                        Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    flower = list.get(idd - 1);
-
-                } else if (filter.equals("Tiệc cưới")) {
-                    try {
-                        list = f.getListFlowerPagesCategory(0, 100, filter);
+                        list = f.getListFlowerPagesCategory(0, 100, cateID);
                     } catch (SQLException ex) {
                         Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -135,7 +128,7 @@ public class HandleCartInPage extends HttpServlet {
 
                 } else if (filter.equals("Trang trí")) {
                     try {
-                        list = f.getListFlowerPagesCategory(0, 100, filter);
+                        list = f.getListFlowerPagesCategory(0, 100, cateID);
                     } catch (SQLException ex) {
                         Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {
@@ -145,7 +138,7 @@ public class HandleCartInPage extends HttpServlet {
 
                 } else if (filter.equals("Sinh nhật")) {
                     try {
-                        list = f.getListFlowerPagesCategory(0, 100, filter);
+                        list = f.getListFlowerPagesCategory(0, 100, cateID);
                     } catch (SQLException ex) {
                         Logger.getLogger(productDetail.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ClassNotFoundException ex) {

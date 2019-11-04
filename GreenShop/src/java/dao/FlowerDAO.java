@@ -429,8 +429,9 @@ public ArrayList<Value> getValueCategory() throws ClassNotFoundException, SQLExc
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         FlowerDAO f1 = new FlowerDAO();
         ArrayList<Flower> list = new ArrayList<Flower>();
+        
+               list = f1.getFilterPrice(0, 100, 400000, 500000);
 
-        list =f1.getListFlowerPagesCategory(0,100,2);
         for ( Flower b : list) {
             System.out.println(b.getfName() + "     " + b.getQuantity());
         }

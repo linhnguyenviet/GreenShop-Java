@@ -1,4 +1,4 @@
-<%-- 
+        <%-- 
     Document   : productPage
     Created on : Jun 15, 2019, 11:25:49 AM
     Author     : HP
@@ -227,7 +227,7 @@
                         <img src ="<%=b.getImg()%>" alt="" </p>
                     </div>
                     <div class="product__name">
-                        <p> <a href="productDetail?id=<%=id%>&filter=<%=filter%>"><%=b.getfName()%></a>  </p>
+                        <p> <a href="productDetail?id=<%=id%>&filter=<%=filter%>&list2=<%=list%>"><%=b.getfName()%></a>  </p>
                     </div>
                     <div class="product__category">
                         <p>  <%=categoryDAO.getCategoryName(b.getCateID())%>  </p>

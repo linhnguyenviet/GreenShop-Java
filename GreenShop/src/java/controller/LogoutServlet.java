@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
  * @author hp
  */
 public class LogoutServlet extends HttpServlet {
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
